@@ -13,9 +13,11 @@ function App() {
   const [resultado, setResultado] = useState(null)
   const [erro, setErro] = useState(null)
 
+  const BASE_URL = 'https://back-fast-query.onrender.com'
+
   const conectar = async () => {
     try {
-      const res = await axios.post('http://localhost:5000/conectar', {
+      const res = await axios.post(`${BASE_URL}/conectar`, {
         servidor,
         usuario,
         senha
@@ -38,7 +40,7 @@ function App() {
   const executar = async () => {
     if (!bancoSelecionado) return setErro('Selecione um banco de dados')
     try {
-      const res = await axios.post('http://localhost:5000/query', {
+      const res = await axios.post(`${BASE_URL}/query`, {
         servidor,
         usuario,
         senha,
@@ -61,7 +63,7 @@ const preview = async () => {
   if (!bancoSelecionado) return setErro('Selecione um banco de dados')
 
   try {
-    const res = await axios.post('http://localhost:5000/preview', {
+    const res = await axios.post(`${BASE_URL}/preview`, {
       servidor,
       usuario,
       senha,
